@@ -4,9 +4,6 @@ package view.tool;
 import snake2d.util.map.MAP_SETTER;
 import view.keyboard.KEYS;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class CustomPlacers {
     public void paintEllipse(int x1, int y1, int x2, int y2, int size, boolean hollow, MAP_SETTER area) {
@@ -44,12 +41,39 @@ public class CustomPlacers {
         }
     }
 
+    public void paintHexagon(int x1, int y1, int x2, int y2, int size, boolean hollow, MAP_SETTER area) {
+        int centerX = (x1 + x2) / 2;
+        int centerY = (y1 + y2) / 2;
+        int radius = Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1));
+
+        for (int y = -radius; y <= radius; y++) {
+            for (int x = -radius; x <= radius; x++) {
+                double dx = Math.abs(x);
+                double dy = Math.abs(y);
+                double r = (dx + dy / 2);
+                if (hollow ? (r > (radius - 1 - size) || dy > (radius -1 - size)) && r <= radius : dx + dy / 2 <= radius) {
+                    area.set(centerX + x, centerY + y);
+                }
+            }
+        }
+
+    }
+
+
     public void hollowEllipse(int x1, int y1, int x2, int y2, int size, MAP_SETTER area) {
         this.paintEllipse(x1, y1, x2, y2, size, true, area);
     }
 
     public void Ellipse(int x1, int y1, int x2, int y2, int size, MAP_SETTER area) {
         this.paintEllipse(x1, y1, x2, y2, size, false, area);
+    }
+
+    public void hollowHexagon(int x1, int y1, int x2, int y2, int size, MAP_SETTER area) {
+        this.paintHexagon(x1, y1, x2, y2,  size, true, area);
+    }
+
+    public void hexagon(int x1, int y1, int x2, int y2, int size, MAP_SETTER area) {
+        this.paintHexagon(x1, y1, x2, y2,  size, false, area);
     }
 }
 

@@ -6,10 +6,6 @@ import init.sprite.UI.Icon;
 import snake2d.util.map.MAP_SETTER;
 import snake2d.util.sets.ArrayList;
 import snake2d.util.sets.LIST;
-import sun.util.resources.cldr.so.CurrencyNames_so;
-
-
-import java.util.List;
 
 public abstract class PLACER_TYPE {
 
@@ -171,6 +167,34 @@ public abstract class PLACER_TYPE {
         }
     };
 
+    public final static PLACER_TYPE HEXAGON_HOLLOW = new PLACER_TYPE(true, true, D.g("hollow hexagon")) {
+        @Override
+        Icon icon() {
+            return SPRITES.icons().m.place_ellispse;
+        }
+
+        // modded
+        @Override
+        void paint(int x1, int y1, int x2, int y2, int size, MAP_SETTER area) {
+            CustomPlacers cls = new CustomPlacers();
+            cls.hollowHexagon(x1, y1, x2, y2, size, area);
+        }
+    };
+
+    public final static PLACER_TYPE HEXAGON = new PLACER_TYPE(true, true, D.g("hexagon")) {
+        @Override
+        Icon icon() {
+            return SPRITES.icons().m.place_ellispse;
+        }
+
+        // modded
+        @Override
+        void paint(int x1, int y1, int x2, int y2, int size, MAP_SETTER area) {
+            CustomPlacers cls = new CustomPlacers();
+            cls.hexagon(x1, y1, x2, y2, size, area);
+        }
+    };
+
     public final static PLACER_TYPE SQUARE_HOLLOW = new PLACER_TYPE(true, true, D.g("hollow rectangle")) {
         @Override
         Icon icon() {
@@ -222,7 +246,7 @@ public abstract class PLACER_TYPE {
     };
 
     // modded
-    public static final LIST<PLACER_TYPE> all = new ArrayList<>(SQUARE, BRUSH, LINE, OVAL, SQUARE_HOLLOW, FILL, OVAL_HOLLOW);
+    public static final LIST<PLACER_TYPE> all = new ArrayList<>(SQUARE, BRUSH, LINE, OVAL, SQUARE_HOLLOW, FILL, OVAL_HOLLOW, HEXAGON, HEXAGON_HOLLOW);
 
     final boolean drag;
     final boolean usesSize;

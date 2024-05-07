@@ -27,7 +27,7 @@
             <properties>
                 <game.mod.directory>${user.home}/.local/share/songsofsyx/mods</game.mod.directory>
                 <game.install.directory>${user.home}/.steam/steam/steamapps/common/Songs of Syx</game.install.directory>
-                <game.mod.uploader.directory>${user.home}/.local/share/songsofsyx/mods-uploader</game.mod.uploader.directory>
+                <game.mod.uploader.directory>${user.home}/.local/share/Steam/steamapps/common/Songs of Syx Workshop Uploader</game.mod.uploader.directory>
             </properties>
             <activation>
                 <os>
@@ -99,10 +99,10 @@
 
         <!-- These settings will go into the mods _Info.txt file -->
         <mod.version>${project.version}</mod.version>
-        <mod.name>Example Mod</mod.name>
-        <mod.description>This is an example mod made by Jake the game developer.</mod.description>
-        <mod.author>Jake</mod.author>
-        <mod.info>Example</mod.info>
+        <mod.name>Shapes Extended</mod.name>
+        <mod.description>Adds and modifies shapes.</mod.description>
+        <mod.author>Obo</mod.author>
+        <mod.info>Adds and modifies shapes</mod.info>
         <game.version.major>66</game.version.major>
         <game.version.minor>12</game.version.minor>
 
