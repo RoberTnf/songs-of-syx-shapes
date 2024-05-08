@@ -44,14 +44,14 @@ public class CustomPlacers {
     public void paintHexagon(int x1, int y1, int x2, int y2, int size, boolean hollow, MAP_SETTER area) {
         int centerX = (x1 + x2) / 2;
         int centerY = (y1 + y2) / 2;
-        int radius = Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1));
+        int radius = Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1)) / 2;
 
         for (int y = -radius; y <= radius; y++) {
             for (int x = -radius; x <= radius; x++) {
                 double dx = Math.abs(x);
                 double dy = Math.abs(y);
                 double r = (dx + dy / 2);
-                if (hollow ? (r > (radius - 1 - size) || dy > (radius -1 - size)) && r <= radius : dx + dy / 2 <= radius) {
+                if (hollow ? (r > (radius - 1 - size) || dy > (radius -1 - size)) && r <= radius : (dx + dy / 2) <= radius) {
                     area.set(centerX + x, centerY + y);
                 }
             }
